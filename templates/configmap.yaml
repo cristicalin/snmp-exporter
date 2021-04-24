@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "snmp_exporter.fullname" . }}
+data:
+  {{- (.Files.Glob "configmap/**.yml").AsConfig | nindent 2 }}
