@@ -36,6 +36,8 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+runtimeClass: kata-qemu
+
 service:
   type: ClusterIP
   port: 80
