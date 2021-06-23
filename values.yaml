@@ -36,7 +36,7 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-runtimeClass: kata-qemu
+runtimeClassName: kata-qemu
 
 service:
   type: ClusterIP

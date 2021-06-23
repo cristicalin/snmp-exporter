@@ -27,7 +27,7 @@ spec:
       serviceAccountName: {{ include "snmp_exporter.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      runtimeClass: {{ .Values.runtimeClass }}
+      runtimeClassName: {{ .Values.runtimeClassName }}
       volumes:
         - name: config
           configMap:
