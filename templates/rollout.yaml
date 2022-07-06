@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: {{ include "snmp_exporter.fullname" . }}
   labels:
@@ -8,6 +8,11 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  strategy:
+    canary:                        # Changed from rollingUpdate or recreate
+      steps:
+      - setWeight: 20
+      - pause: {}
   selector:
     matchLabels:
       {{- include "snmp_exporter.selectorLabels" . | nindent 6 }}
